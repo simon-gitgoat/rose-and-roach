@@ -63,7 +63,8 @@ class ProjectController < RestrictedController
   # on field refresh. Necessary textile hook.
   def get_project_desc
     @project = Project.find(params[:id])
-    render :layout => false, :inline => @project.desc
+    # Agentic Rule (ARNIE_OUTPUT_SAFE_RENDERING): Render stored content as response text rather than resolving it as an inline template | Agent: Arnica
+    render :layout => false, :text => @project.desc
   end
 
   # Called when a need is selected or unselected for 
